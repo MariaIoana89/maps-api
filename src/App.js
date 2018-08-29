@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import CityMap from './Components/CityMap'
-import CityPlaces from './Components/CityPlaces'
+import React, { Component } from 'react';
+import CityMap from './Components/CityMap';
+import CityPlaces from './Components/CityPlaces';
 
 class App extends Component {
   state = {
@@ -23,7 +23,6 @@ class App extends Component {
           address: item.venue.location.address,
           crossStreet: item.venue.location.crossStreet,
           state: item.venue.location.state,
-          coordinates: item.venue.location.lat + ', ' + item.venue.location.lng,
           postalCode: item.venue.location.postalCode
         }
       })
@@ -32,11 +31,11 @@ class App extends Component {
     })
     .catch(err => {
       console.log('Foursquare error:', err);
-      alert('Something went wrong while fetching the locations from Forsquare. Please try again later.');
+      alert('No fetching locations from Forsquare. Please try again!');
     })  	
   }
 
-  onLocationClick = event => {
+  onClickLocation = event => {
   	this.setState({
   		query: event.target.textContent
   	})
@@ -67,7 +66,7 @@ class App extends Component {
 	      <CityPlaces
 	      	locations={this.state.locations}
 	      	query={this.state.query}
-	      	onLocationClick={this.onLocationClick}
+	      	onClickLocation={this.onClickLocation}
 	      	onInputClick={this.onInputClick}	      	
 	      	onQueryChange={this.updateQuery}
 	      />

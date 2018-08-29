@@ -4,7 +4,7 @@ import escregexp from 'escape-regexp'
 
 function CityPlaces (props) {
 	
-	const expression = new RegExp(escregexp(props.query).toLowerCase().trim())
+	const expr = new RegExp(escregexp(props.query).toLowerCase().trim())
 
 	return (
 		<ul className='list'>
@@ -14,13 +14,13 @@ function CityPlaces (props) {
 				onQueryChange={props.onQueryChange} 
 			/>
 			{props.locations.filter(location => {
-				return expression.test(location.title.toLowerCase())
+				return expr.test(location.title.toLowerCase())
 			})
 			.map(location => {
 				return (
 					<li
 						key={location.title}
-						onClick={props.onLocationClick}
+						onClick={props.onClickLocation}
 						tabIndex="2"
 						aria-label="Location"
 					>

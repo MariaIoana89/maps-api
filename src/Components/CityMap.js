@@ -1,27 +1,27 @@
-import React, {Component} from 'react'
-import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
-import escregexp from 'escape-regexp'
+import React, {Component} from 'react';
+import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react';
+import escregexp from 'escape-regexp';
 
-//Google Maps API script error handler
+//Google Maps API error handler
 document.addEventListener("DOMContentLoaded", function(error) {
   let googleMapScript = document.getElementsByTagName('SCRIPT').item(1);
   googleMapScript.onerror = function(error) {
     console.log('Google Maps API error: ', error);
-    alert('Something went wrong while fetching the map from Google. Please try again later.');
+    alert('No fetching map from Google. Please try again!');
   }
 });
 
 class CityMap extends Component {
 	
 	state = {
-	  selectedMaker: {},
+	  activeMarker: {},
 	  selectedPlace: {},
 	  selectedMarkerInfoWindow: false
 	}	
 
 	onMarkerClick = (props, marker, e) => {
 	  this.setState({
-	    selectedMaker: marker,
+	    activeMarker: marker,
 	    selectedPlace: props,
 	    selectedMarkerInfoWindow: true
 	  })
@@ -54,12 +54,11 @@ class CityMap extends Component {
 								key={location.id} 
 								position={{ lat: location.position.lat, lng: location.position.lng}} 
 								title={location.title} 
-								animation={this.props.google.maps.Animation.Fo}
+								animation={this.props.google.maps.Animation.DROP}
 				                category={location.category}
 				                address={location.address}
 				                crossStreet={location.crossStreet}
 				                state={location.state}
-				                coordinates={location.coordinates}
 				                postalCode={location.postalCode}
                                 onClick={this.onMarkerClick}
 							/>
@@ -67,7 +66,8 @@ class CityMap extends Component {
 					})
 				}
 
-				<InfoWindow marker={this.state.selectedMaker} visible={this.state.selectedMarkerInfoWindow}>
+				<InfoWindow marker={this.state.activeMarker} 
+                visible={this.state.selectedMarkerInfoWindow}>
 					<div>
 					    <h2>{this.state.selectedPlace.title}</h2>
 					    <h3>{this.state.selectedPlace.category}</h3>
