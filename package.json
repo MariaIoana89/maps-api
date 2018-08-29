@@ -1,6 +1,6 @@
 {
   "name": "maps-api",
-  "hostname": "https://github.com/MariaIoana89/neighborhood_maps",
+  "hostname": "https://github.com/MariaIoana89/maps-api",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -12,7 +12,7 @@ The project was built for the Udacity Front End Nanodegree Program.
 5. When the project starts the tags will be rendered by default so the user can remove any one of them or remove all then search for any place and select desired tags.
 
 ## How To Use it 
-1. Clone Project https://github.com/MariaIoana89/neighborhood_maps 
+1. Clone Project https://github.com/MariaIoana89/maps-api
 2. Run command `npm install` to install all packages in package.json file 
 3. To start Project run `npm start` 
 
