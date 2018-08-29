@@ -53,7 +53,9 @@ class CityMap extends Component {
 							<Marker 
 								key={location.id} 
 								position={{ lat: location.position.lat, lng: location.position.lng}} 
-								title={location.title} 
+								title={location.title}
+                                icon={{ url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                                    scaledSize: this.props.google.maps.Size(64, 64) }}
 								animation={this.props.google.maps.Animation.DROP}
 				                category={location.category}
 				                address={location.address}
