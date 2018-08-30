@@ -73,6 +73,7 @@ class App extends Component {
 	      <CityMap 
 	      	locations={this.state.locations}
 	      	query={this.state.query}
+          role="application"
 	      />    		
     	</div>
     );
